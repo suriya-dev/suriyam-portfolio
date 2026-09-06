@@ -2,6 +2,25 @@
 
 A dark-mode (with **light mode toggle**) split-screen portfolio landing page built with **Angular 20** (standalone components, new control-flow `@for`/`@if`, Signals). It recreates a polished senior-frontend hero scene with a live **"Micro-Frontend Architecture" network animation**, a glowing **tech-stack carousel** (now incl. **React**), a **hide/show menu bar**, and a dedicated **R&D / experiments section** for a senior 5-year frontend seat.
 
+## 🧱 Sections (all from the checklist)
+
+1. **Hero** — headline + one-line value prop, animated network, tech carousel, CTA.
+2. **About** — bio + key metrics + **resume download**.
+3. **Skills** — grouped capabilities (Angular, Micro-Frontends, React, APIs & Security, Performance).
+4. **Projects** — enhanced cards with **problem, role, impact metrics, tech stack, GitHub + Live links** (CBDC/HDFC, GIB, FAB, Bank ABC).
+5. **Experience** — Mindgate timeline with full impact bullets + client strip.
+6. **R&D / Experiments** — virtual scroll, OnPush CD, MF POC, signals, React interop, RTL PDFs.
+7. **Testimonials** — recommendations (placeholder copy — replace with real LinkedIn recs).
+8. **Contact** — email, phone, LinkedIn, GitHub + a working **contact form** (mailto).
+
+## 🔍 SEO & technical
+
+- Per-page `<title>` + meta description, keywords, canonical, robots.
+- **Open Graph + Twitter Card** tags for LinkedIn/X link previews.
+- `public/og-image.png` (social preview) + `apple-touch-icon.png`.
+- `public/robots.txt` + `public/sitemap.xml` (points to the Vercel URL).
+- Semantic headings, ARIA labels, keyboard-accessible menu & theme toggle, mobile responsive.
+
 ## ✨ Highlights
 
 - **Theme toggle (dark ⇄ light)** — deep-blue/charcoal dark theme and a clean light theme, driven by semantic CSS variables. Persists to `localStorage` and respects `prefers-color-scheme`.

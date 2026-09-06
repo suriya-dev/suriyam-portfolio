@@ -108,11 +108,41 @@
   </div>
 </section>
 
+<!-- ===================== ABOUT ===================== -->
+<section class="block" id="about">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">01 · ABOUT</span>
+      <h2>Owns products end-to-end</h2>
+      <p class="block-sub">Where solid architecture meets the pressure of real-time financial systems.</p>
+    </header>
+    <div class="about-grid">
+      <div class="about-bio">
+        @for (p of about.bio; track p) {
+          <p><strong>{{ about.name }}</strong> — {{ p }}</p>
+        }
+      </div>
+      <div class="about-highlights">
+        @for (h of about.highlights; track h.k) {
+          <div class="hl">
+            <span class="hl-num">{{ h.k }}</span>
+            <span class="hl-lbl">{{ h.v }}</span>
+          </div>
+        }
+        <a class="cta ghost resume" [href]="resumeUrl" download>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 16l-4-4h2.5V6h3v6H16zM6 19h12v2H6z"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== SKILLS ===================== -->
 <section class="block" id="skills">
   <div class="block-inner">
     <header class="block-head">
-      <span class="kicker mono">01 · CAPABILITIES</span>
+      <span class="kicker mono">02 · CAPABILITIES</span>
       <h2>Tooling I ship with</h2>
       <p class="block-sub">A focused, production-grade toolkit for modern frontend architecture.</p>
     </header>
@@ -145,8 +175,9 @@
 <section class="block" id="projects">
   <div class="block-inner">
     <header class="block-head">
-      <span class="kicker mono">02 · FLAGSHIP WORK</span>
+      <span class="kicker mono">03 · FLAGSHIP WORK</span>
       <h2>Key projects</h2>
+      <p class="block-sub">Problems I owned, my exact role, and the measurable impact — with the tech that got it done.</p>
     </header>
     <div class="projs">
       @for (p of projects; track p.title) {
@@ -156,10 +187,54 @@
             <span class="proj-tag mono">{{ p.tag }}</span>
           </div>
           <h3>{{ p.title }}</h3>
-          <p>{{ p.desc }}</p>
+
+          <div class="proj-row"><span class="proj-k">Problem</span><p class="proj-v">{{ p.problem }}</p></div>
+          <div class="proj-row"><span class="proj-k">My role</span><p class="proj-v">{{ p.role }}</p></div>
+
+          <ul class="proj-impact">
+            @for (i of p.impact; track i) { <li>{{ i }}</li> }
+          </ul>
+
           <div class="proj-stack mono">{{ p.stack }}</div>
+
+          <div class="proj-links">
+            <a [href]="p.github" target="_blank" rel="noopener" class="proj-link">
+              <span class="proj-link-ic" [innerHTML]="faIcon(FA.github)"></span> GitHub
+            </a>
+            <a [href]="liveUrl" target="_blank" rel="noopener" class="proj-link">
+              <span class="proj-link-ic" [innerHTML]="faIcon(FA.external)"></span> Live
+            </a>
+          </div>
         </article>
       }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="block" id="experience">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">04 · EXPERIENCE</span>
+      <h2>Where I've made an impact</h2>
+    </header>
+    <div class="timeline">
+      @for (job of experience; track job.company) {
+        <article class="tl">
+          <div class="tl-head">
+            <h3>{{ job.role }} <span class="tl-co">· {{ job.company }}</span></h3>
+            <span class="tl-date mono">{{ job.period }}</span>
+          </div>
+          <div class="tl-loc mono">{{ job.location }}</div>
+          <p class="tl-summary">{{ job.summary }}</p>
+          <ul class="tl-bullets">
+            @for (b of job.bullets; track b) { <li>{{ b }}</li> }
+          </ul>
+        </article>
+      }
+    </div>
+    <div class="tools-strip">
+      <span>HDFC Bank</span><span>FAB</span><span>GIB</span><span>Bank ABC</span><span>Ajman Bank</span>
     </div>
   </div>
 </section>
@@ -168,7 +243,7 @@
 <section class="block" id="rnd">
   <div class="block-inner">
     <header class="block-head">
-      <span class="kicker mono">03 · R&D &amp; EXPERIMENTS</span>
+      <span class="kicker mono">05 · R&D &amp; EXPERIMENTS</span>
       <h2>Pushing the framework's edges</h2>
       <p class="block-sub">Production builds and R&D spikes where I turn framework concepts — virtual scroll, change-detection strategy, signals, micro-frontends — into working, measurable wins. Built for a senior 5-year frontend seat.</p>
     </header>
@@ -190,20 +265,71 @@
   </div>
 </section>
 
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="block" id="testimonials">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">06 · RECOMMENDATIONS</span>
+      <h2>What people say</h2>
+      <p class="block-sub">Feedback from the teams and product leads I\u2019ve worked with.</p>
+    </header>
+    <div class="testi-grid">
+      @for (t of testimonials; track t.name) {
+        <article class="testi">
+          <div class="testi-quote">\u201C{{ t.quote }}\u201D</div>
+          <div class="testi-author">
+            <span class="testi-ava">{{ t.initials }}</span>
+            <div>
+              <div class="testi-name">{{ t.name }}</div>
+              <div class="testi-title">{{ t.title }}</div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+    <p class="testi-note mono">Placeholders — replace with real LinkedIn recommendations before sharing publicly.</p>
+  </div>
+</section>
+
 <!-- ===================== CONTACT ===================== -->
 <section class="block contact" id="contact">
   <div class="block-inner">
     <header class="block-head">
-      <span class="kicker mono">04 · LET'S TALK</span>
+      <span class="kicker mono">07 · LET'S TALK</span>
       <h2>Open to Senior &amp; Frontend-Lead roles</h2>
       <p class="block-sub">Banking · Fintech · Digital Payments. If you're building something where scale and reliability matter, I'd love to talk.</p>
     </header>
-    <div class="contact-actions">
-      <button class="cta primary" (click)="mailto()">
-        <span class="cta-glow"></span>
-        <span class="cta-label">suriyamano123@outlook.com</span>
-      </button>
-      <a class="cta ghost" href="tel:+918248733150"><span class="cta-label">+91 82487 33150</span></a>
+    <div class="contact-grid">
+      <div class="contact-actions">
+        <button class="cta primary" (click)="mailto()">
+          <span class="cta-glow"></span>
+          <span class="cta-label">suriyamano123@outlook.com</span>
+        </button>
+        <a class="cta ghost" href="tel:+918248733150"><span class="cta-label">+91 82487 33150</span></a>
+        <div class="contact-socials">
+          <a href="https://linkedin.com/in/suriyam123" target="_blank" rel="noopener">
+            <span class="cs-ic" [innerHTML]="faIcon(FA.linkedin)"></span> LinkedIn
+          </a>
+          <a href="https://github.com/suriya-dev" target="_blank" rel="noopener">
+            <span class="cs-ic" [innerHTML]="faIcon(FA.github)"></span> GitHub
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" (submit)="submitContact($event)">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" [(ngModel)]="form.name" required autocomplete="name" aria-label="Your name">
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" [(ngModel)]="form.email" required autocomplete="email" aria-label="Your email">
+        </label>
+        <label class="field">
+          <span>Message</span>
+          <textarea name="message" [(ngModel)]="form.message" rows="4" required aria-label="Your message"></textarea>
+        </label>
+        <button type="submit" class="cta primary full"><span class="cta-glow"></span><span class="cta-label">Send Message</span></button>
+      </form>
     </div>
   </div>
 </section>

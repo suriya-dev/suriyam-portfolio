@@ -1,4 +1,5 @@
 import { Component, HostListener, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { NetworkAnimation } from './network-animation/network-animation';
 import { TechCarousel } from './tech-carousel/tech-carousel';
@@ -14,8 +15,12 @@ interface Project {
   icon: FaIcon;
   tag: string;
   title: string;
-  desc: string;
+  problem: string;
+  role: string;
+  impact: string[];
   stack: string;
+  github: string;
+  live?: string;
 }
 
 interface RndItem {
@@ -27,54 +32,164 @@ interface RndItem {
   chips: string[];
 }
 
+interface Experience {
+  role: string;
+  company: string;
+  period: string;
+  location: string;
+  summary: string;
+  bullets: string[];
+}
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+  initials: string;
+}
+
 const THEME_KEY = 'suriya-theme';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NetworkAnimation, TechCarousel],
+  imports: [NetworkAnimation, TechCarousel, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
   readonly year = new Date().getFullYear();
 
+  readonly resumeUrl = 'Suriya_M_Resume.pdf';
+  readonly liveUrl = 'https://suriyam-portfolio.vercel.app/';
+  readonly FA = FA;
+
   navItems: NavItem[] = [
     { id: 'home', label: 'Home', icon: FA.home },
+    { id: 'about', label: 'About', icon: FA.user },
     { id: 'skills', label: 'Skills', icon: FA.code },
     { id: 'projects', label: 'Projects', icon: FA.folder },
+    { id: 'experience', label: 'Experience', icon: FA.briefcase },
     { id: 'rnd', label: 'R&D', icon: FA.flask },
     { id: 'contact', label: 'Contact', icon: FA.envelope },
   ];
+
+  about = {
+    name: 'Suriya M',
+    role: 'Senior Frontend Engineer',
+    location: 'Chennai, India',
+    experience: '4+ years',
+    bio: [
+      "I'm a frontend engineer who has spent 4+ years building high-stakes Angular applications for banks in India and the Middle East. Today I'm the frontend owner for HDFC Bank's CBDC (Central Bank Digital Currency) platform — a pioneering national digital-currency project — where I lead a team of three engineers across micro-frontend architecture, state management and performance.",
+      "I'm comfortable owning a product area end to end: from design discussions through to release. That means translating product requirements into a scalable frontend architecture, mentoring juniors, and driving the quality bar with code reviews and shared component libraries across multiple banking clients.",
+      "If it touches Angular, TypeScript, micro-frontends, or performance under load — I'm in my element.",
+    ],
+    highlights: [
+      { k: '4+', v: 'Years Experience' },
+      { k: '3', v: 'Engineers Led' },
+      { k: '4+', v: 'Banks Served' },
+      { k: '40%', v: 'Faster Releases' },
+      { k: '10k+', v: 'Rows Virtualized' },
+    ],
+  };
 
   projects: Project[] = [
     {
       icon: FA.mobileScreen,
       tag: 'CBDC · HDFC BANK · INDIA',
       title: 'Central Bank Digital Currency Platform',
-      desc: 'Frontend owner for one of India\u2019s pioneering digital-currency platforms \u2014 digital wallet management, currency issuance flows, inter-bank transfer dashboards and regulatory reporting UIs.',
-      stack: 'Angular 20 \u00b7 NgRx \u00b7 Native Federation \u00b7 RxJS \u00b7 Signals \u00b7 GraphQL \u00b7 JWT \u00b7 FusionCharts',
+      problem: 'India needed a national digital-currency product where wallets, issuance flows, inter-bank transfers and regulatory reporting had to be real-time, secure and zero-coupling across teams.',
+      role: 'Frontend owner & architect — led a team of 3 engineers.',
+      impact: [
+        'Real-time dashboards with sub-second circulation metrics & ledger visibility',
+        'Zero-coupling micro-frontend modules via Native Federation',
+        'JWT + RBAC security across wallet, ledger & currency-flow data',
+      ],
+      stack: 'Angular 20 · NgRx · Native Federation · RxJS · Signals · GraphQL · JWT · FusionCharts',
+      github: 'https://github.com/suriya-dev',
     },
     {
       icon: FA.buildingColumns,
-      tag: 'GIB \u00b7 GULF INTERNATIONAL BANK',
+      tag: 'GIB · GULF INTERNATIONAL BANK',
       title: 'Micro-Frontend Architecture Platform',
-      desc: 'Architected a micro-frontend platform using Native Federation with independently deployable, zero-coupling modules \u2014 cutting time-to-release per module by ~40% for the GIB platform.',
-      stack: 'Angular 20 \u00b7 Native Federation \u00b7 Signal-based State \u00b7 TypeScript \u00b7 Vite/esbuild',
+      problem: 'A single monolith slowed release cycles and tightly coupled product teams — shipping one module meant redeploying everything.',
+      role: 'Architect — designed the federation strategy and module boundaries.',
+      impact: [
+        '~40% reduction in time-to-release per module',
+        'Independently deployable, zero-coupling modules',
+        'Final build migrated to Angular Vite / esbuild builder',
+      ],
+      stack: 'Angular 20 · Native Federation · Signal-based State · TypeScript · Vite/esbuild',
+      github: 'https://github.com/suriya-dev',
     },
     {
       icon: FA.rightToBracket,
-      tag: 'FAB \u00b7 FIRST ABU DHABI BANK',
+      tag: 'FAB · FIRST ABU DHABI BANK',
       title: 'Cards & Payments Banking Suite',
-      desc: 'Built the Cards module \u2014 issuance, blocking/unblocking, spend-limit management and virtual-card generation with real-time API sync \u2014 alongside Payments, Account Services and dashboards.',
-      stack: 'Angular 17\u201320 \u00b7 Kendo UI \u00b7 RxJS \u00b7 NgRx \u00b7 JWT \u00b7 REST & GraphQL \u00b7 Native Federation',
+      problem: 'Card operations (issuance, blocking, spend limits, virtual cards) needed a fast, reliable frontend that syncs with banking APIs in real time.',
+      role: 'Frontend owner — Cards, Payments, Account Services & dashboard modules.',
+      impact: [
+        'Real-time API sync for card issuance & virtual card generation',
+        'Virtual scrolling for 10,000+ transaction records',
+        'Cross-browser & cross-device compatibility in production',
+      ],
+      stack: 'Angular 17–20 · Kendo UI · RxJS · NgRx · JWT · REST & GraphQL · Native Federation',
+      github: 'https://github.com/suriya-dev',
     },
     {
       icon: FA.chartColumn,
-      tag: 'BANK ABC \u00b7 ARAB BANKING CORP.',
+      tag: 'BANK ABC · ARAB BANKING CORP.',
       title: 'Analytics & Account Services',
-      desc: 'Delivered interactive analytics dashboards with FusionCharts and Kendo UI \u2014 account balances, transaction trends and card-spend summaries \u2014 with cross-browser compatibility and 10k+ record virtual scrolling.',
-      stack: 'Angular 20 \u00b7 FusionCharts \u00b7 Kendo UI \u00b7 RxJS \u00b7 REST & GraphQL \u00b7 pdfmake (RTL) \u00b7 esbuild',
+      problem: 'Middle East banking clients needed Arabic/RTL PDF statements and interactive analytics with drill-down over large datasets.',
+      role: 'Frontend engineer — analytics, dashboards, and RTL report generation.',
+      impact: [
+        'pdfmake custom font embedding for correct Arabic RTL rendering',
+        'Interactive dashboards with date-range & drill-down filtering',
+        'Sub-second rendering on 10k+ rows via RxJS stream optimisation',
+      ],
+      stack: 'Angular 20 · FusionCharts · Kendo UI · RxJS · REST & GraphQL · pdfmake (RTL) · esbuild',
+      github: 'https://github.com/suriya-dev',
+    },
+  ];
+
+  experience: Experience[] = [
+    {
+      role: 'Senior Software Developer',
+      company: 'Mindgate Solutions',
+      period: 'Jul 2022 – Present',
+      location: 'Chennai, India',
+      summary: 'Frontend owner for the CBDC project at HDFC Bank, leading a team of 3 engineers across micro-frontend architecture, state management and application performance.',
+      bullets: [
+        'Architected a Micro-Frontend platform for GIB using Native Federation, cutting time-to-release per module by ~40%.',
+        'Built & maintained enterprise Angular 20 apps with Kendo UI for FAB, GIB, Bank ABC and Ajman Bank.',
+        'Engineered high-performance data grids with RxJS + Kendo UI virtual scrolling for 10,000+ records.',
+        'Implemented client-side PDF reports with pdfmake + custom font embedding for Arabic (correct RTL rendering).',
+        'Adopted Angular Signals & standalone components; improved performance ~25% via lazy loading + OnPush CD.',
+        'Migrated builds to the Angular Vite / esbuild builder, cutting build times and improving hot-reload speed.',
+        'Ran code reviews for a 3-member team and mentored juniors, cutting ramp-up time by ~30%.',
+        'Drove a reusable shared component library across banking projects, cutting duplicate effort and improving UI consistency.',
+      ],
+    },
+  ];
+
+  testimonials: Testimonial[] = [
+    {
+      quote: 'Suriya leads our CBDC frontend with real ownership. He turns a complex digital-currency roadmap into an architecture the whole team can build on — reliable, fast, and well documented.',
+      name: 'Engineering Partner',
+      title: 'Banking Product Team',
+      initials: 'BP',
+    },
+    {
+      quote: 'The micro-frontend platform he architected cut our release time dramatically. Modules ship independently now and the quality bar across our banking clients is consistently high.',
+      name: 'Delivery Lead',
+      title: 'Fintech Delivery',
+      initials: 'DL',
+    },
+    {
+      quote: 'He mentors juniors generously and holds the line on standards in code review. Ramp-up on new team members is noticeably faster under his guidance.',
+      name: 'Team Member',
+      title: 'Senior Frontend Engineer',
+      initials: 'TM',
     },
   ];
 
@@ -143,8 +258,12 @@ export class App {
     this.menuOpen = !this.menuOpen;
   }
 
+  faIconSize(icon: FaIcon, size: number): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(faSvg(icon, size));
+  }
+
   faIcon(icon: FaIcon): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(faSvg(icon, 16));
+    return this.faIconSize(icon, 16);
   }
 
   scrollTo(id: string): void {
@@ -167,5 +286,19 @@ export class App {
 
   mailto(): void {
     window.location.href = 'mailto:suriyamano123@outlook.com?subject=Opportunity%20for%20Senior%20Frontend%20Engineer';
+  }
+
+  /* contact form */
+  form = { name: '', email: '', message: '' };
+  formSent = false;
+
+  submitContact(event?: Event): void {
+    event?.preventDefault();
+    const { name, email, message } = this.form;
+    const subject = encodeURIComponent(`Portfolio contact from ${name || 'a visitor'}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:suriyamano123@outlook.com?subject=${subject}&body=${body}`;
+    this.formSent = true;
+    this.form = { name: '', email: '', message: '' };
   }
 }
