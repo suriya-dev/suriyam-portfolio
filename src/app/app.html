@@ -53,52 +53,68 @@
   <app-network-animation></app-network-animation>
 
   <div class="hero-content">
-    <div class="marquee mono" aria-hidden="true">
-      <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
-      <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
+    <div class="hero-col hero-copy">
+      <div class="marquee mono" aria-hidden="true">
+        <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
+        <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
+      </div>
+
+      <header class="eyebrow mono">
+        <span class="pulse-dot"></span> AVAILABLE FOR SENIOR / FRONTEND-LEAD ROLES
+      </header>
+
+      <h1 class="title">
+        <span class="t-line">
+          <span class="t-grad">SURIYA&nbsp;M</span>
+          <span class="t-sep">//</span>
+        </span>
+        <span class="t-line t-tag">SENIOR&nbsp;FRONTEND&nbsp;ENGINEER</span>
+      </h1>
+
+      <p class="tagline">
+        Architecting high-scale <span class="hl-cyan">banking UIs</span> with
+        <span class="hl-purple">Angular</span> &amp;&nbsp;<span class="hl-cyan">Micro-Frontends</span>, and now
+        <span class="hl-purple">React</span>.
+      </p>
+
+      <!-- Tech icon carousel -->
+      <app-tech-carousel></app-tech-carousel>
+
+      <!-- CTA -->
+      <div class="cta-row">
+        <button class="cta primary" (click)="scrollTo('projects')">
+          <span class="cta-glow"></span>
+          <span class="cta-label">View My CBDC Project</span>
+          <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <a class="cta ghost" href="mailto:suriyamano123@outlook.com">
+          <span class="cta-label">Get In Touch</span>
+        </a>
+      </div>
+
+      <div class="hero-foot mono">
+        <span>CHENNAI · INDIA</span>
+        <span class="sep">◆</span>
+        <a href="https://linkedin.com/in/suriyam123" target="_blank" rel="noopener">LINKEDIN</a>
+        <span class="sep">◆</span>
+        <a href="https://github.com/suriya-dev" target="_blank" rel="noopener">GITHUB</a>
+        <span class="sep">◆</span>
+        <span>4+ YRS · ANGULAR 14–20 · REACT</span>
+      </div>
     </div>
 
-    <header class="eyebrow mono">
-      <span class="pulse-dot"></span> AVAILABLE FOR SENIOR / FRONTEND-LEAD ROLES
-    </header>
-
-    <h1 class="title">
-      <span class="t-line">
-        <span class="t-grad">SURIYA&nbsp;M</span>
-        <span class="t-sep">//</span>
-      </span>
-      <span class="t-line t-tag">SENIOR&nbsp;FRONTEND&nbsp;ENGINEER</span>
-    </h1>
-
-    <p class="tagline">
-      Architecting high-scale <span class="hl-cyan">banking UIs</span> with
-      <span class="hl-purple">Angular</span> &amp;&nbsp;<span class="hl-cyan">Micro-Frontends</span>, and now
-      <span class="hl-purple">React</span>.
-    </p>
-
-    <!-- Tech icon carousel -->
-    <app-tech-carousel></app-tech-carousel>
-
-    <!-- CTA -->
-    <div class="cta-row">
-      <button class="cta primary" (click)="scrollTo('projects')">
-        <span class="cta-glow"></span>
-        <span class="cta-label">View My CBDC Project</span>
-        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <a class="cta ghost" href="mailto:suriyamano123@outlook.com">
-        <span class="cta-label">Get In Touch</span>
-      </a>
-    </div>
-
-    <div class="hero-foot mono">
-      <span>CHENNAI · INDIA</span>
-      <span class="sep">◆</span>
-      <a href="https://linkedin.com/in/suriyam123" target="_blank" rel="noopener">LINKEDIN</a>
-      <span class="sep">◆</span>
-      <a href="https://github.com/suriya-dev" target="_blank" rel="noopener">GITHUB</a>
-      <span class="sep">◆</span>
-      <span>4+ YRS · ANGULAR 14–20 · REACT</span>
+    <!-- Photo column -->
+    <div class="hero-col hero-photo">
+      <div class="portrait">
+        <div class="portrait-ring" aria-hidden="true"></div>
+        <img src="photo-cut.png" alt="Suriya M — Senior Frontend Engineer" class="portrait-img" width="1400" height="1202" loading="eager">
+        <div class="portrait-badge badge-1">
+          <span class="pb-dot"></span><span class="pb-txt">Frontend Owner</span>
+        </div>
+        <div class="portrait-badge badge-2">
+          <span class="pb-dot"></span><span class="pb-txt">CBDC · HDFC Bank</span>
+        </div>
+      </div>
     </div>
   </div>
 
