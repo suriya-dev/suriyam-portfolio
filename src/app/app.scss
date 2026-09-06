@@ -137,10 +137,11 @@
 /* Portrait */
 .portrait {
   position: relative;
-  width: clamp(240px, 28vw, 340px);
-  aspect-ratio: 1.05;   /* semi-square portrait */
-  display: grid;
-  place-items: center;
+  width: clamp(220px, 26vw, 320px);
+  aspect-ratio: 4 / 5;   /* portrait orientation — full headroom, no clipping */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 .portrait-ring {
   position: absolute;
@@ -158,8 +159,10 @@
 .portrait-img {
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
   /* subtle float */
   animation: floaty 6s ease-in-out infinite;
@@ -188,8 +191,8 @@
   animation: floaty 7s ease-in-out infinite;
 }
 .portrait-badge .pb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--glow-cyan); }
-.badge-1 { top: 12%; left: -26%; animation-delay: 0.6s; }
-.badge-2 { bottom: 16%; right: -22%; animation-delay: 1.4s; }
+.badge-1 { top: 56%; left: -18%; animation-delay: 0.6s; }
+.badge-2 { top: 72%; right: -16%; animation-delay: 1.4s; }
 .badge-1 .pb-dot { background: var(--cyan); }
 .badge-2 .pb-dot { background: var(--purple); }
 
@@ -737,9 +740,9 @@
   .projs { grid-template-columns: 1fr; }
   .hero-content { grid-template-columns: 1fr; gap: 28px; }
   .hero-photo { order: -1; }
-  .portrait { width: clamp(210px, 52vw, 300px); }
-  .badge-1 { left: -8%; }
-  .badge-2 { right: -6%; }
+  .portrait { width: clamp(190px, 44vw, 260px); }
+  .badge-1 { top: 58%; left: -4%; }
+  .badge-2 { top: 74%; right: -4%; }
   /* top menu collapses to a dropdown panel toggled by hamburger */
   .nav-menu {
     position: absolute;
