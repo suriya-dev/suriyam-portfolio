@@ -1,0 +1,211 @@
+<!-- ===================== TOP MENU BAR (hide/show) ===================== -->
+<header class="topbar" [class.menu-closed]="!menuOpen">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="#" (click)="scrollTo('home'); $event.preventDefault()">
+      SURIYA<span class="dot">.</span>M
+    </a>
+    <nav class="nav-menu" aria-label="Primary">
+      @for (item of navItems; track item.id) {
+        <a [class.active]="active === item.id" (click)="scrollTo(item.id)">
+          <span class="menu-ic" [innerHTML]="faIcon(item.icon)"></span>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+    <div class="topbar-right">
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+        @if (isDark) {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        } @else {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+        }
+        <span>{{ isDark ? 'Light' : 'Dark' }}</span>
+      </button>
+      <button class="menu-toggle" [class.open]="menuOpen" (click)="toggleMenu()" [attr.aria-label]="menuOpen ? 'Hide menu' : 'Show menu'">
+        <span class="burger-ic"><span></span><span></span><span></span></span>
+        <span class="lbl">{{ menuOpen ? 'Hide' : 'Show' }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== FLOATING SIDEBAR (decorative rail) ===================== -->
+<nav class="sidebar" aria-label="Quick nav">
+  <a class="brand" href="#" (click)="scrollTo('home'); $event.preventDefault()" aria-label="Home">
+    <span class="brand-glyph">S/</span>
+  </a>
+  <div class="side-links">
+    @for (item of navItems; track item.id) {
+      <button class="side-link" (click)="scrollTo(item.id)">
+        <span class="side-ic" [innerHTML]="faIcon(item.icon)"></span>
+        <span class="side-tip">{{ item.label }}</span>
+      </button>
+    }
+  </div>
+  <div class="side-foot">
+    <div class="vert-line"></div>
+    <span class="vert-tag">EST. 2021</span>
+  </div>
+</nav>
+
+<!-- ===================== HERO SCENE ===================== -->
+<section class="hero" id="home">
+  <app-network-animation></app-network-animation>
+
+  <div class="hero-content">
+    <div class="marquee mono" aria-hidden="true">
+      <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
+      <span>ANGULAR</span><i>·</i><span>MICRO-FRONTENDS</span><i>·</i><span>NATIVE FEDERATION</span><i>·</i><span>CBDC</span><i>·</i><span>FINTECH</span><i>·</i><span>BANKING UI</span><i>·</i><span>REACT</span><i>·</i>
+    </div>
+
+    <header class="eyebrow mono">
+      <span class="pulse-dot"></span> AVAILABLE FOR SENIOR / FRONTEND-LEAD ROLES
+    </header>
+
+    <h1 class="title">
+      <span class="t-line">
+        <span class="t-grad">SURIYA&nbsp;M</span>
+        <span class="t-sep">//</span>
+      </span>
+      <span class="t-line t-tag">SENIOR&nbsp;FRONTEND&nbsp;ENGINEER</span>
+    </h1>
+
+    <p class="tagline">
+      Architecting high-scale <span class="hl-cyan">banking UIs</span> with
+      <span class="hl-purple">Angular</span> &amp;&nbsp;<span class="hl-cyan">Micro-Frontends</span>, and now
+      <span class="hl-purple">React</span>.
+    </p>
+
+    <!-- Tech icon carousel -->
+    <app-tech-carousel></app-tech-carousel>
+
+    <!-- CTA -->
+    <div class="cta-row">
+      <button class="cta primary" (click)="scrollTo('projects')">
+        <span class="cta-glow"></span>
+        <span class="cta-label">View My CBDC Project</span>
+        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a class="cta ghost" href="mailto:suriyamano123@outlook.com">
+        <span class="cta-label">Get In Touch</span>
+      </a>
+    </div>
+
+    <div class="hero-foot mono">
+      <span>CHENNAI · INDIA</span>
+      <span class="sep">◆</span>
+      <a href="https://linkedin.com/in/suriyam123" target="_blank" rel="noopener">LINKEDIN</a>
+      <span class="sep">◆</span>
+      <a href="https://github.com/suriya-dev" target="_blank" rel="noopener">GITHUB</a>
+      <span class="sep">◆</span>
+      <span>4+ YRS · ANGULAR 14–20 · REACT</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="mouse"></span>
+    <span class="scroll-label">SCROLL</span>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="block" id="skills">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">01 · CAPABILITIES</span>
+      <h2>Tooling I ship with</h2>
+      <p class="block-sub">A focused, production-grade toolkit for modern frontend architecture.</p>
+    </header>
+    <div class="cards">
+      <div class="card">
+        <span class="card-ic">⚙️</span><h3>Angular 14–20</h3>
+        <p>Standalone components, Signals, Zoneless &amp; OnPush change detection, RxJS, reactive forms, route guards and lazy loading.</p>
+      </div>
+      <div class="card">
+        <span class="card-ic">🧩</span><h3>Micro-Frontends</h3>
+        <p>Native &amp; Module Federation, NgRx, signal-based state and reusable component libraries for zero-coupling teams.</p>
+      </div>
+      <div class="card">
+        <span class="card-ic">⚛️</span><h3>React</h3>
+        <p>React 18 + Hooks, functional components, context &amp; hooks-based state — and interop with Angular shells via federation.</p>
+      </div>
+      <div class="card">
+        <span class="card-ic">🔐</span><h3>APIs &amp; Security</h3>
+        <p>REST + GraphQL, HttpClient &amp; interceptors, JWT auth and RBAC via route guards.</p>
+      </div>
+      <div class="card">
+        <span class="card-ic">🚀</span><h3>Performance</h3>
+        <p>Vite/esbuild builds, OnPush + Signals change detection strategies, virtual scrolling for 10k+ rows, and sub-second rendering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section class="block" id="projects">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">02 · FLAGSHIP WORK</span>
+      <h2>Key projects</h2>
+    </header>
+    <div class="projs">
+      @for (p of projects; track p.title) {
+        <article class="proj">
+          <div class="proj-head">
+            <span class="proj-ic" [innerHTML]="faIcon(p.icon)"></span>
+            <span class="proj-tag mono">{{ p.tag }}</span>
+          </div>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.desc }}</p>
+          <div class="proj-stack mono">{{ p.stack }}</div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== R&D / EXPERIMENTS ===================== -->
+<section class="block" id="rnd">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">03 · R&D &amp; EXPERIMENTS</span>
+      <h2>Pushing the framework's edges</h2>
+      <p class="block-sub">Production builds and R&D spikes where I turn framework concepts — virtual scroll, change-detection strategy, signals, micro-frontends — into working, measurable wins. Built for a senior 5-year frontend seat.</p>
+    </header>
+    <div class="rnd-grid">
+      @for (r of rndItems; track r.title) {
+        <article class="rnd">
+          <div class="rnd-top">
+            <span class="rnd-ic">{{ r.icon }}</span>
+            <span class="rnd-status" [class.imp]="r.status === 'imp'" [class.rnd]="r.status === 'rnd'">{{ r.statusLabel }}</span>
+          </div>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.desc }}</p>
+          <div class="rnd-chips">
+            @for (c of r.chips; track c) { <span>{{ c }}</span> }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="block contact" id="contact">
+  <div class="block-inner">
+    <header class="block-head">
+      <span class="kicker mono">04 · LET'S TALK</span>
+      <h2>Open to Senior &amp; Frontend-Lead roles</h2>
+      <p class="block-sub">Banking · Fintech · Digital Payments. If you're building something where scale and reliability matter, I'd love to talk.</p>
+    </header>
+    <div class="contact-actions">
+      <button class="cta primary" (click)="mailto()">
+        <span class="cta-glow"></span>
+        <span class="cta-label">suriyamano123@outlook.com</span>
+      </button>
+      <a class="cta ghost" href="tel:+918248733150"><span class="cta-label">+91 82487 33150</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer mono">© {{ year }} SURYA M · CHENNAI · CRAFTED WITH ANGULAR</footer>
